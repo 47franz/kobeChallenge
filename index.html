@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Code Challenge Kobe</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code Challenge Kobe</title>
 
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-	</head>
-	<body>	
-	<div ng-app="ChallengeApp" ng-controller="moviesController">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">					
-					<a class="navbar-brand" href="#">Challenge Kobe</a>
-				</div>			
-			</div>
-		</nav>
+  </head>
+  <body>  
+  <div ng-app="ChallengeApp" ng-controller="moviesController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">          
+          <a class="navbar-brand" href="#">Challenge Kobe</a>
+        </div>      
+      </div>
+    </nav>
 
-		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Upcoming Movies</h1>
-				<p>...</p>
-			</div>
-		</div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Upcoming Movies</h1>
+        <p>...</p>
+      </div>
+    </div>
 
-		<div class="container">
-			<div class="row" ng-repeat="movies in listMovies">
-				<div class="col-sm-3 col-md-3 col-xs-12" ng-repeat="movie in movies">
-					<div class="thumbnail" ng-show="movie.poster_path">
-						<img ng-src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="img-responsive" />
-						<div class="caption">
-							<h3>{{movie.title}}</h3>
-							<p>Genre: {{movie.categoryNames}}</p>
-							<p>Release Date: {{movie.release_date | date:'MM/dd/yyyy'}}</p>
-							<p ng-show="movie.show">{{movie.overview}}</p>
-							<p>
-								<a class="btn btn-default" ng-show="!movie.show" ng-click="showMore(movie)">View details &raquo;</a>
-								<a class="btn btn-default" ng-show="movie.show" ng-click="showMore(movie)">Hide details &laquo;</a>
-							</p>
-						</div>
-					</div>
-				</div>				
-			</div>
-			<div class=row>		
-				<div class="col-xs-12">
-					<button type="button" ng-disabled="page === totalPages" class="btn btn-default btn-lg pull-right" ng-click="moreMovies(page+1)">More Movies</button>
-				</div>
-			</div
-			
-			<hr>
+    <div class="container">
+      <div class="row" ng-repeat="movies in listMovies">
+        <div class="col-sm-3 col-md-3 col-xs-12" ng-repeat="movie in movies">
+          <div class="thumbnail" ng-show="movie.poster_path">
+            <img ng-src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="img-responsive" />
+            <div class="caption">
+              <h3>{{movie.title}}</h3>
+              <p>Genre: <span ng-repeat="category in movie.categoryNames"> {{category}} </span></p>
+              <p>Release Date: {{movie.release_date | date:'MM/dd/yyyy'}}</p>
+              <p ng-show="movie.show">{{movie.overview}}</p>
+              <p>
+                <a class="btn btn-default" ng-show="!movie.show" ng-click="showMore(movie)">View details &raquo;</a>
+                <a class="btn btn-default" ng-show="movie.show" ng-click="showMore(movie)">Hide details &laquo;</a>
+              </p>
+            </div>
+          </div>
+        </div>        
+      </div>
+      <div class=row>    
+        <div class="col-xs-12">
+          <button type="button" ng-disabled="page === totalPages" class="btn btn-default btn-lg pull-right" ng-click="moreMovies(page+1)">More Movies</button>
+        </div>
+      </div
+      
+      <hr>
 
-			<footer>
-			<p>by William Franz</p>
-			</footer>
-		</div> <!-- /container -->
-		
-	</div>
-	
-	<!-- Angular -->
-	<script src="lib/angular.min.js"></script>
-	<script src="app/js/app.js"></script>
-	</body>
+      <footer>
+      <p>by William Franz</p>
+      </footer>
+    </div> <!-- /container -->
+    
+  </div>
+  
+  <!-- Angular -->
+  <script src="lib/angular.min.js"></script>
+  <script src="app/js/app.js"></script>
+  </body>
 </html>
